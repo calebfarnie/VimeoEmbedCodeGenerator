@@ -10,7 +10,7 @@ This program was developed for staff and faculty at the Colorado School of Mines
 </center>
 
 ## Download
-* [Version 0.1](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/raw/main/VimeoEmbedCodeGenerator_v0_1.jar)
+* [Version 0.1](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/raw/main/versions/VimeoEmbedCodeGenerator_v0_1.jar)
 
 ## Usage
 + Paste or enter the Vimeo URL into the "Enter Vimeo link:" box
