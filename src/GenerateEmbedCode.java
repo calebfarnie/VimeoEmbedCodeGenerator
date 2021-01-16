@@ -167,7 +167,7 @@ public class GenerateEmbedCode extends JFrame{
 		panel.add(line1);
 		panel.add(line2);
 
-		JOptionPane.showMessageDialog(gui, panel, "� 2021 Caleb Farnie", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(gui, panel, "© 2021 Caleb Farnie", JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
