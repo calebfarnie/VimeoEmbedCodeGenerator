@@ -19,7 +19,7 @@ Vimeo Embed Code Generator
 * [Caleb Farnie](https://github.com/calebfarnie/)
 
 ## License 
-* see [LICENSE](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/LICENSE.md) file
+* see [LICENSE](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/blob/main/LICENSE.md) file
 
 ## Version 
 * Version 0.1
