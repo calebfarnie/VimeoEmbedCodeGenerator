@@ -28,5 +28,3 @@ Vimeo Embed Code Generator
 #### Developer/Company
 * Homepage: [http://farnie.dev/](http://farnie.dev/)
 * e-mail: [caleb@farnie.dev](mailto:caleb@farnie.dev)
-
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=username&url=https://github.com/username/sw-name&title=sw-name&language=&tags=github&category=software) 
