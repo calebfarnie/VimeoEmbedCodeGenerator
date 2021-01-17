@@ -16,6 +16,7 @@ This program was developed for staff and faculty at the Colorado School of Mines
 ## Usage
 * Paste or enter the Vimeo URL into the "Enter Vimeo link:" box
 * Click "Generate!"
+* Change the width/height or choose any options that you may like
 * Click "Copy to Clipboard" to copy the embed code to the clipboard
 * That's it!
  
