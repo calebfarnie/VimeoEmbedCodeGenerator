@@ -27,10 +27,13 @@ This program was developed for staff and faculty at the Colorado School of Mines
 ## License 
 * see [LICENSE](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/blob/main/LICENSE.md) file
 
-## Version 
-* Version 0.1 - initial version.
+## Version Changelog
+* Version 0.1
+    * Initial version
 * Version 0.2
-    * Added 'paste' functionality for Vimeo link
+    * Added 'paste' functionality for Vimeo URL
+    * Added custom width and height functionality
+    * Added options for 'allow fullscreen,' 'autoplay,' and 'loop.'
 
 ## Contact
 #### Developer

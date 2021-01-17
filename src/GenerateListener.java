@@ -30,10 +30,16 @@ public class GenerateListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		int width, height;
+		
 		String text = GenerateEmbedCode.url.getText();
 		
 		String videoID = GenerateEmbedCode.processURL(text);
-		String embedCode = GenerateEmbedCode.generateEmbed(videoID);
+		width = Integer.parseInt(GenerateEmbedCode.width.getText());
+		height = Integer.parseInt(GenerateEmbedCode.height.getText());
+		
+		String embedCode = GenerateEmbedCode.generateEmbed(videoID, width, height, GenerateEmbedCode.autoplay_bool,
+				GenerateEmbedCode.loop_bool, GenerateEmbedCode.fullscreen_bool);
 		
 		GenerateEmbedCode.embed.setText(embedCode);
 		GenerateEmbedCode.embed.selectAll();

@@ -1,7 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,23 +45,37 @@ import javax.swing.border.TitledBorder;
 public class GenerateEmbedCode extends JFrame {
 
 	public static final double VERSION = 0.2;
-	
+
 	public static GenerateEmbedCode gui;
-	public static JTextField url;
+	public static JTextField url, width, height;
+	public static JCheckBox fullscreen, autoplay, loop;
 	public static JTextArea embed;
+
+	public static boolean autoplay_bool, loop_bool, fullscreen_bool;
 
 	// Constructor
 	public GenerateEmbedCode() {
 		setTitle("Vimeo Embed Code Generator v" + VERSION);
-		setSize(new Dimension(400, 250));
+		setSize(new Dimension(500, 275));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		add(vimeoLinkRow(), BorderLayout.NORTH);
+		add(firstRow(), BorderLayout.NORTH);
 		add(embedCodeRow(), BorderLayout.CENTER);
 		add(buttonRow(), BorderLayout.SOUTH);
 	}
 
 	// JPanels
+	public JPanel firstRow() {
+		JPanel panel = new JPanel();
+
+		panel.setLayout(new BorderLayout());
+
+		panel.add(vimeoLinkRow(), BorderLayout.NORTH);
+		panel.add(customizationRow(), BorderLayout.SOUTH);
+
+		return panel;
+	}
+
 	public JPanel vimeoLinkRow() {
 		JPanel panel = new JPanel();
 
@@ -67,7 +85,7 @@ public class GenerateEmbedCode extends JFrame {
 		panel.setBorder(title);
 
 		url = new JTextField("https://vimeo.com/");
-		
+
 		JButton paste = new JButton("Paste");
 		paste.addActionListener(new PasteListener());
 
@@ -76,6 +94,108 @@ public class GenerateEmbedCode extends JFrame {
 
 		return panel;
 	}
+
+	public JPanel customizationRow() {
+		JPanel panel = new JPanel();
+
+		panel.setLayout(new BorderLayout());
+		panel.add(customLeftSection(), BorderLayout.WEST);
+		panel.add(customRightSection(), BorderLayout.CENTER);
+
+		return panel;
+	}
+
+	public JPanel customLeftSection() {
+		JPanel panel = new JPanel();
+
+		TitledBorder title = new TitledBorder(new EtchedBorder(), "Dimensions:");
+		panel.setBorder(title);
+
+		panel.setLayout(new BorderLayout());
+
+		panel.add(widthSection(), BorderLayout.WEST);
+		panel.add(heightSection(), BorderLayout.EAST);
+
+		return panel;
+	}
+
+	public JPanel widthSection() {
+		JPanel panel = new JPanel();
+
+		panel.setLayout(new GridLayout(1, 1));
+
+		JLabel widthLabel = new JLabel("Width:");
+		width = new JTextField("640");
+
+		panel.add(widthLabel);
+		panel.add(width);
+
+		return panel;
+	}
+
+	public JPanel heightSection() {
+		JPanel panel = new JPanel();
+
+		panel.setLayout(new GridLayout(1, 1));
+
+		JLabel heightLabel = new JLabel("Height:");
+		height = new JTextField("360");
+
+		panel.add(heightLabel);
+		panel.add(height);
+
+		return panel;
+	}
+
+	public JPanel customRightSection() {
+		JPanel panel = new JPanel();
+
+		TitledBorder title = new TitledBorder(new EtchedBorder(), "Options:");
+		panel.setBorder(title);
+
+		panel.setLayout(new BorderLayout());
+
+		fullscreen = new JCheckBox("Allow fullscreen", true); fullscreen_bool = true;
+		fullscreen.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {         
+				if(e.getStateChange()==1) {
+					fullscreen_bool = true;
+				}else {
+					fullscreen_bool = false;
+				}
+			} 
+		});
+
+		autoplay = new JCheckBox("Autoplay", false); autoplay_bool = false;
+		autoplay.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {         
+				if(e.getStateChange()==1) {
+					autoplay_bool = true;
+				}else {
+					autoplay_bool = false;
+				}
+			} 
+		});
+		
+		loop = new JCheckBox("Loop", false); loop_bool = false;
+		loop.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {         
+				if(e.getStateChange()==1) {
+					loop_bool = true;
+				}else {
+					loop_bool = false;
+				}
+			} 
+		});
+
+		panel.add(fullscreen, BorderLayout.CENTER);
+		panel.add(autoplay, BorderLayout.WEST);
+		panel.add(loop, BorderLayout.EAST);
+
+
+		return panel;
+	}
+
 
 	public JPanel embedCodeRow() {
 		JPanel panel = new JPanel();
@@ -151,14 +271,50 @@ public class GenerateEmbedCode extends JFrame {
 		return videoID;
 	}
 
-	public static String generateEmbed(String videoID) {
+	public static String generateEmbed(String videoID, int width, int height, boolean autoplay, boolean loop, boolean fullscreen) {
 		if (videoID.equals("")) {
 			return "";
 		} else {
-			String embedCode = "<iframe src=\"https://player.vimeo.com/video/" + videoID
-					+ "\" width=\"640\" height=\"360\" frameborder=\"0\" allow=\"autoplay; fullscreen\" allowfullscreen></iframe>";
+			String embedCode = "<iframe src=\"https://player.vimeo.com/video/" + videoID;
+
+			// autoplay
+			if(autoplay) {
+				embedCode += "?autoplay=1";
+			}
+
+			// loop (alone)
+			if(loop && !autoplay) {
+				embedCode += "?loop=1";
+			}
+			
+			// loop and autoplay
+			if(loop && autoplay) {
+				embedCode += "&loop=1";
+			}
+
+
+			// width, height, etc
+			embedCode += "\" width=\"" +  width + "\" height=\"" + height + "\" frameborder=\"0\" allow=\"autoplay;";
+
+			// fullscreen 1
+			if(fullscreen) {
+				embedCode += " fullscreen;";
+			}
+
+			// pic-in-pic
+			embedCode += " picture-in-picture\"";
+
+			// fullscreen 2
+			if(fullscreen) {
+				embedCode += " allowfullscreen";
+			}
+
+			// close tag
+			embedCode += "></iframe>";
+
 			return embedCode;
 		}
+
 	}
 
 	// main
@@ -172,7 +328,7 @@ public class GenerateEmbedCode extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(0, 1));
 
-		JLabel line1 = new JLabel("This program was designed for the Trefny");
+		JLabel line1 = new JLabel("This tool was designed for the Trefny");
 		JLabel line2 = new JLabel("Center at the Colorado School of Mines.");
 		line1.setHorizontalAlignment(SwingConstants.CENTER);
 		line2.setHorizontalAlignment(SwingConstants.CENTER);
