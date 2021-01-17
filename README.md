@@ -10,13 +10,14 @@ This program was developed for staff and faculty at the Colorado School of Mines
 </center>
 
 ## Download
-* [Version 0.1](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/raw/main/versions/VimeoEmbedCodeGenerator_v0_1.jar)
+* [Vimeo Embed Code Generator v0.2](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/raw/main/versions/VimeoEmbedCodeGenerator_v0_2.jar) (most recent)
+* [Vimeo Embed Code Generator v0.1](https://github.com/calebfarnie/VimeoEmbedCodeGenerator/raw/main/versions/VimeoEmbedCodeGenerator_v0_1.jar)
 
 ## Usage
-+ Paste or enter the Vimeo URL into the "Enter Vimeo link:" box
-+ Click "Generate!"
-+ Click "Copy to Clipboard" to copy the embed code to the clipboard
-+ That's it!
+* Paste or enter the Vimeo URL into the "Enter Vimeo link:" box
+* Click "Generate!"
+* Click "Copy to Clipboard" to copy the embed code to the clipboard
+* That's it!
  
 ## Contributors
 
@@ -28,6 +29,8 @@ This program was developed for staff and faculty at the Colorado School of Mines
 
 ## Version 
 * Version 0.1 - initial version.
+* Version 0.2
+    * Added 'paste' functionality for Vimeo link
 
 ## Contact
 #### Developer
