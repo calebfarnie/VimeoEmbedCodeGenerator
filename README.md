@@ -6,7 +6,7 @@ This program was developed for staff and faculty at the Colorado School of Mines
 
 #### Screenshot
 <center>
-<img src="https://github.com/calebfarnie/VimeoEmbedCodeGenerator/blob/main/images/main_screenshot.png?raw=true" width="400"/>
+<img src="https://github.com/calebfarnie/VimeoEmbedCodeGenerator/blob/main/images/main_screenshot_v0_2.png?raw=true" width="400"/>
 </center>
 
 ## Download
