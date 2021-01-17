@@ -40,13 +40,15 @@ import javax.swing.border.TitledBorder;
 
 public class GenerateEmbedCode extends JFrame {
 
+	public static final double VERSION = 0.2;
+	
 	public static GenerateEmbedCode gui;
 	public static JTextField url;
 	public static JTextArea embed;
 
 	// Constructor
 	public GenerateEmbedCode() {
-		setTitle("Vimeo Embed Code Generator v0.1");
+		setTitle("Vimeo Embed Code Generator v" + VERSION);
 		setSize(new Dimension(400, 250));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,14 +61,18 @@ public class GenerateEmbedCode extends JFrame {
 	public JPanel vimeoLinkRow() {
 		JPanel panel = new JPanel();
 
-		panel.setLayout(new GridLayout(0, 1));
+		panel.setLayout(new BorderLayout());
 
 		TitledBorder title = new TitledBorder(new EtchedBorder(), "Enter Vimeo link:");
 		panel.setBorder(title);
 
 		url = new JTextField("https://vimeo.com/");
+		
+		JButton paste = new JButton("Paste");
+		paste.addActionListener(new PasteListener());
 
-		panel.add(url);
+		panel.add(url, BorderLayout.CENTER);
+		panel.add(paste, BorderLayout.EAST);
 
 		return panel;
 	}

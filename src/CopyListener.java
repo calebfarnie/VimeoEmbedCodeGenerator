@@ -32,7 +32,7 @@ import java.awt.event.ActionListener;
 public class CopyListener implements ActionListener {
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent a) {
 		StringSelection data = new StringSelection(GenerateEmbedCode.embed.getText());
 		Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
 		cb.setContents(data, data);
